@@ -1,13 +1,12 @@
-<article class="card-pokemon">
+<article class="card-pokemon {{pokemon.types[0].type.name}}" [routerLink]="['/pokedex',pokemon.name]">
     <div class="card-header">
-        <h2>Charmander</h2>
-        <span>#4</span>
+        <h2>{{pokemon.name}}</h2>
+        <span>#{{pokemon.id}}</span>
     </div>
     <div class="box-img">
-        <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="">
+        <img class="img-responsive" src="{{pokemon.sprites.other['official-artwork'].front_default}}" width="193" height="193" alt="Imagem do pokemon {{pokemon.name}}">
     </div>
     <ul class="types">
-        <li>Grass</li>
-        <li>Poison</li>
+        <li *ngFor="let type of pokemon.types" class="{{type.type.name}}">{{type.type.name}}</li>
     </ul>
 </article>

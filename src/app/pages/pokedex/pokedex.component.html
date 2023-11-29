@@ -1,5 +1,10 @@
 <section class="pokedex">
     <div class="container">
-        <app-card-pokemon></app-card-pokemon>
+        <div class="section-content">
+            <app-card-pokemon *ngFor="let pokemon of pokemons.results" pokemonName="{{pokemon.name}}"></app-card-pokemon>            
+        </div>
+        <div class="section-footer" *ngIf="loadmore">
+            <button class="loadmore" (click)="loadmorePokemons()">Carregar Mais</button>
+        </div>
     </div>
 </section>

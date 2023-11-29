@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face 
+    font-family: 'Roboto'
+    src: url('assets/fonts/Roboto-Light.ttf') format('truetype')
+    font-weight: 300
+    font-style: normal
+
+@font-face 
+    font-family: 'Roboto'
+    src: url('assets/fonts/Roboto-Regular.ttf') format('truetype')
+    font-weight: 400
+    font-style: normal
+
+@font-face 
+    font-family: 'Roboto'
+    src: url('assets/fonts/Roboto-Bold.ttf') format('truetype')
+    font-weight: 700
+    font-style: normal
+
+@font-face 
+    font-family: 'Roboto'
+    src: url('assets/fonts/Roboto-Black.ttf') format('truetype')
+    font-weight: 900
+    font-style: normal
+
+html
+    font: 16px/1.5 'Roboto', sans-serif
+
+body 
+    margin: 0
+
+.img-responsive
+    display: block,
+    max-width: 100%,
+    height: auto
+
+button
+    border: none
+    background: transparent
+    font: inherit
+    appearance: none    
+
+.loadmore 
+    padding: 15px 25px
+    border-radius: 8px
+    cursor: pointer
+    background: #f05030
+    border: 2px solid #ffffff
+    font-weight: 700
+    font-size: 1.25rem
+    line-height: 1em
+    color: #ffffff
+    transition: background 300ms ease-in-out
+
+    &:hover
+        background: #6890f0
+        
