@@ -1,0 +1,216 @@
+.single-pokemon
+    height: 100vh    
+
+    .go-back
+        position: absolute
+        z-index: 3
+        top: 15px
+        left: 15px
+
+    .container
+        max-width: 1470px
+        margin: 0 auto
+        padding: 50px 15px 0
+
+    .section-header        
+        margin-bottom: 25px
+
+        h1
+            margin: 0
+            font-weight: bold
+            font-size: 4rem
+            line-height: 1em
+            color: #ffffff
+
+            small
+                font-size: .5em
+
+    .section-content
+        display: flex
+        justify-content: space-between
+        margin-bottom: 30px
+        gap: 60px
+
+        .left-content
+            position: relative
+            max-width: 415px
+            width: 100%
+
+            .back-default 
+                position: absolute
+                z-index: 2
+                top: 0
+                left: 0
+
+            .box-img
+                position: relative
+
+                .bt-shiny
+                    position: absolute
+                    top: 15px
+                    right: 0        
+
+                        
+
+        .right-content
+            flex-grow: 1
+            padding: 30px
+            border-radius: 25px        
+            background: #ffffff
+            
+            .box-header
+                display: grid
+                grid-gap: 30px
+                grid-template-columns: repeat(2,1fr)
+
+                h2
+                    margin: 0 0 15px
+
+                p
+                    margin: 0
+                
+                ul
+                    padding: 0
+
+                    li
+                        display: flex
+                        align-items: center
+                        gap: 15px
+                        
+                        h3
+                            margin: 0
+                            width: 40px
+                            font-size: .875rem
+
+                        span
+                            width: 30px
+
+                        .progress-container
+                            flex-grow: 1
+
+                            progress
+                                width: 100%
+            
+            .box-content
+                .evolution-chain
+                    margin: 0
+                    padding: 0
+                    list-style: none
+                    display: grid                    
+                    grid-template-columns: repeat(auto-fit, minmax(100px, calc(100% / 5)))
+.forms 
+    margin: 0
+    padding: 0
+    list-style: none
+
+    li
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        opacity: 0
+        pointer-events: none
+        transition: opacity 300ms ease-out
+
+        &:first-child
+            position: relative            
+
+        
+        &.active
+            opacity: 1
+
+        &.show-shiny
+
+            img 
+                opacity: 0
+
+            .shiny 
+                opacity: 1
+
+        img
+            transition: opacity 300ms ease-out            
+
+.shiny
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    pointer-events: none
+    transition: opacity 300ms ease-in
+
+.pokemon-info 
+    margin: 0
+    padding: 0
+    list-style: none
+
+    >li
+        + li
+            margin-top: 30px        
+
+.other-forms 
+    display: grid
+    grid-gap: 15px
+    grid-template-columns: repeat(3,1fr)
+    margin: 0
+    padding: 0
+    list-style: none
+
+    li
+        background: #ffffff
+        border-radius: 100%
+        padding: 15px
+        cursor: pointer
+
+.bt-shiny,
+.back-default 
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 15px
+    padding: 10px 20px
+    border-radius: 25px    
+    border: 2px solid #ffffff
+    font-size: 1rem
+    line-height: 1em
+    transition: transform 300ms ease-out
+    cursor: pointer
+
+    &:hover
+        
+        &::before
+            background: rgba(0,0,0,1)
+
+    &:before 
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        border-radius: 25px
+        background: rgba(0,0,0,.5)
+        mix-blend-mode: overlay
+        transition: background 300ms ease-out
+
+    .icon
+        position: relative
+
+        img 
+            filter: invert(82%) sepia(53%) saturate(513%) hue-rotate(356deg) brightness(102%) contrast(96%)
+            position: relative
+            z-index: 2
+
+.bt-shiny
+    width: 50px
+    height: 50px
+    padding: 5px   
+
+    &:before 
+        border-radius: 100%
+
+.back-default
+    color: #ffffff
