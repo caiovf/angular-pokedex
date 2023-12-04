@@ -9,14 +9,15 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class CardPokemonComponent implements OnInit {
   @Input() pokemonName:string = '';
-  
+
   pokemon:PokemonData = {
     id: 0,
     name: '',
     sprites: {
       other: {
         'official-artwork': {
-          front_default: ''
+          front_default: '',
+          front_shiny: ''
         }
       }
     },
@@ -26,11 +27,17 @@ export class CardPokemonComponent implements OnInit {
           name:'',
           url:''
       },
-    }
-    ],
-  }  
-  pokemonTypes:string[] = ['fire']  
-  
+    }],
+    stats:[{
+      base_stat: '',
+      effort: 0,
+      stat:{
+          name: ''
+      }
+    }]
+  }
+  pokemonTypes:string[] = ['fire']
+
   constructor(
     private service:PokemonService
   ) { }
@@ -39,12 +46,7 @@ export class CardPokemonComponent implements OnInit {
     this.service.getPokemon(this.pokemonName).subscribe(
       {
         next: (res) => {
-          this.pokemon = {
-            id: res.id,
-            name: res.name,
-            sprites: res.sprites,
-            types: res.types
-          }
+          this.pokemon = res
         },
         error: (err) => console.error(err)
       }

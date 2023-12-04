@@ -1,5 +1,5 @@
 .single-pokemon
-    height: 100vh    
+    min-height: 100vh
 
     .go-back
         position: absolute
@@ -12,7 +12,7 @@
         margin: 0 auto
         padding: 50px 15px 0
 
-    .section-header        
+    .section-header
         margin-bottom: 25px
 
         h1
@@ -21,6 +21,7 @@
             font-size: 4rem
             line-height: 1em
             color: #ffffff
+            text-transform: capitalize
 
             small
                 font-size: .5em
@@ -36,7 +37,7 @@
             max-width: 415px
             width: 100%
 
-            .back-default 
+            .back-default
                 position: absolute
                 z-index: 2
                 top: 0
@@ -48,16 +49,16 @@
                 .bt-shiny
                     position: absolute
                     top: 15px
-                    right: 0        
+                    right: 0
 
-                        
+
 
         .right-content
             flex-grow: 1
             padding: 30px
-            border-radius: 25px        
+            border-radius: 25px
             background: #ffffff
-            
+
             .box-header
                 display: grid
                 grid-gap: 30px
@@ -68,7 +69,7 @@
 
                 p
                     margin: 0
-                
+
                 ul
                     padding: 0
 
@@ -76,7 +77,7 @@
                         display: flex
                         align-items: center
                         gap: 15px
-                        
+
                         h3
                             margin: 0
                             width: 40px
@@ -90,15 +91,15 @@
 
                             progress
                                 width: 100%
-            
+
             .box-content
                 .evolution-chain
                     margin: 0
                     padding: 0
                     list-style: none
-                    display: grid                    
+                    display: grid
                     grid-template-columns: repeat(auto-fit, minmax(100px, calc(100% / 5)))
-.forms 
+.forms
     margin: 0
     padding: 0
     list-style: none
@@ -114,22 +115,22 @@
         transition: opacity 300ms ease-out
 
         &:first-child
-            position: relative            
+            position: relative
 
-        
+
         &.active
             opacity: 1
 
         &.show-shiny
 
-            img 
+            img
                 opacity: 0
 
-            .shiny 
+            .shiny
                 opacity: 1
 
         img
-            transition: opacity 300ms ease-out            
+            transition: opacity 300ms ease-out
 
 .shiny
     position: absolute
@@ -141,16 +142,16 @@
     pointer-events: none
     transition: opacity 300ms ease-in
 
-.pokemon-info 
+.pokemon-info
     margin: 0
     padding: 0
     list-style: none
 
     >li
         + li
-            margin-top: 30px        
+            margin-top: 30px
 
-.other-forms 
+.other-forms
     display: grid
     grid-gap: 15px
     grid-template-columns: repeat(3,1fr)
@@ -165,14 +166,14 @@
         cursor: pointer
 
 .bt-shiny,
-.back-default 
+.back-default
     position: relative
     display: flex
     align-items: center
     justify-content: center
     gap: 15px
     padding: 10px 20px
-    border-radius: 25px    
+    border-radius: 25px
     border: 2px solid #ffffff
     font-size: 1rem
     line-height: 1em
@@ -180,11 +181,11 @@
     cursor: pointer
 
     &:hover
-        
+
         &::before
             background: rgba(0,0,0,1)
 
-    &:before 
+    &:before
         content: ''
         position: absolute
         top: 0
@@ -199,7 +200,7 @@
     .icon
         position: relative
 
-        img 
+        img
             filter: invert(82%) sepia(53%) saturate(513%) hue-rotate(356deg) brightness(102%) contrast(96%)
             position: relative
             z-index: 2
@@ -207,9 +208,9 @@
 .bt-shiny
     width: 50px
     height: 50px
-    padding: 5px   
+    padding: 5px
 
-    &:before 
+    &:before
         border-radius: 100%
 
 .back-default

@@ -1,37 +1,37 @@
-<section class="single-pokemon fire">
+<section class="single-pokemon {{pokemon.types[0].type.name}}">
     <button class="go-back" (click)="back()">
         <img class="img-responsive" src="../../../assets/img/voltar.png" width="25" height="25" alt="">
     </button>
     <div class="container">
-        <div class="section-header">            
-            <h1><small>#06</small> Charizard</h1>
+        <div class="section-header">
+            <h1><small>#{{pokemon.id}}</small> {{pokemon.name}}</h1>
         </div>
         <div class="section-content">
             <div class="left-content">
                 <ng-container *ngIf="isFirstFormActive()">
-                    <button class="back-default fire" (click)="toggleForm(0)">
+                    <button class="back-default {{pokemon.types[0].type.name}}" (click)="toggleForm(0)">
                         Normal Form
                     </button>
                 </ng-container>
                 <div class="box-img">
                     <ul class="forms">
-                        <li *ngFor="let pokemonForm of pokemonForms ; let i = index; let first = first" [ngClass]="{'active':pokemonForm.active,'show-shiny':showShiny}">
-                            <img class="img-responsive" [src]="pokemonForm.normal" width="415" height="415" alt="">
-                            <img class="img-responsive shiny" [src]=" pokemonForm.shiny " width="415" height="415" alt="">
-                        </li>                        
+                        <li *ngFor="let pokemonForm of pokemonSpecies.varieties ; let i = index; let first = first" [ngClass]="{'active':pokemonForm.is_default,'show-shiny':showShiny}">
+                            <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{getPokemonIdByUrl(pokemonForm.pokemon.url)}}.png" width="415" height="415" alt="">
+                            <img class="img-responsive shiny" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/{{getPokemonIdByUrl(pokemonForm.pokemon.url)}}.png" width="415" height="415" alt="">
+                        </li>
                     </ul>
-                    
-                    <button class="bt-shiny fire" (click)="seePokemonShiny()">
+
+                    <button class="bt-shiny {{pokemon.types[0].type.name}}" (click)="seePokemonShiny()">
                         <div class="icon">
                             <img class="img-responsive" src="../../../assets/img/sparkler.png" width="32" height="32" alt="">
                         </div>
                     </button>
                 </div>
                 <ul class="other-forms">
-                    <li *ngFor="let pokemonForm of pokemonForms.slice(1); let i = index;" (click)="toggleForm(i+1)">
+                    <li *ngFor="let pokemonForm of pokemonSpecies.varieties.slice(1); let i = index;" (click)="toggleForm(i+1)">
                         <div class="box-img">
-                            <img class="img-responsive" [src]="pokemonForm.normal" width="98" height="98" alt="">
-                        </div>                        
+                            <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{getPokemonIdByUrl(pokemonForm.pokemon.url)}}.png" width="98" height="98" alt="">
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -40,13 +40,12 @@
                     <div class="box-left">
                         <div class="bio">
                             <h2>Description</h2>
-                            <p>Spits fire that is hot enough to melt boulders.Known to cause forest fires unintentionally.</p>
+                            <p>Spits fire that is hot enough to melt boulders.^LKnown to cause forest fires unintentionally.</p>
                         </div>
                         <div class="pokemon-type">
                             <h2>Type</h2>
                             <ul class="types">
-                                <li class="fire">Fire</li>
-                                <li class="flying">Flying</li>
+                                <li *ngFor="let type of pokemon.types" class="{{type.type.name}}">{{type.type.name}}</li>
                             </ul>
                         </div>
                     </div>
@@ -58,45 +57,45 @@
                                 <div class="progress-container">
                                     <progress max="330" value="95">95</progress>
                                 </div>
-                                <span>95</span>                                
+                                <span>95</span>
                             </li>
                             <li>
                                 <h3>ATK</h3>
                                 <div class="progress-container">
                                     <progress max="248" value="104">104</progress>
                                 </div>
-                                <span>104</span>                                
+                                <span>104</span>
                             </li>
                             <li>
                                 <h3>DEF</h3>
                                 <div class="progress-container">
                                     <progress max="258" value="109">109</progress>
                                 </div>
-                                <span>109</span>                                
+                                <span>109</span>
                             </li>
                             <li>
                                 <h3>S.ATK</h3>
                                 <div class="progress-container">
                                     <progress max="258" value="115">115</progress>
                                 </div>
-                                <span>115</span>                                
+                                <span>115</span>
                             </li>
                             <li>
                                 <h3>S.DEF</h3>
                                 <div class="progress-container">
                                     <progress max="210" value="85">85</progress>
                                 </div>
-                                <span>85</span>                                
+                                <span>85</span>
                             </li>
                             <li>
                                 <h3>SPD</h3>
                                 <div class="progress-container">
                                     <progress max="240" value="100">100</progress>
                                 </div>
-                                <span>100</span>                                
+                                <span>100</span>
                             </li>
                         </ul>
-                    </div>                               
+                    </div>
                 </div>
                 <div class="box-content">
                     <h2>Evolution Tree</h2>
@@ -119,9 +118,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="section-footer">
-            
         </div>
     </div>
 </section>

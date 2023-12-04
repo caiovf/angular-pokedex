@@ -7,12 +7,12 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.sass']
 })
-export class PokedexComponent implements OnInit {  
+export class PokedexComponent implements OnInit {
   offset:number = 0
   limit:number = 30
   firstGerationPokemon:number = 151
   loadmore:boolean = true;
-  
+
   pokemons:PokemonListData = {
     count:0,
     next: null,
@@ -46,25 +46,21 @@ export class PokedexComponent implements OnInit {
           error: (err) => console.error(err)
         }
       )
-    }    
+    }
   }
-  
-  
+
+
 
   ngOnInit(): void {
     this.service.getListPokemon(this.offset,this.limit).subscribe(
       {
         next: (res) => {
-          this.pokemons = {
-            count: res.count,
-            next: res.next,
-            previous: res.previous,
-            results: res.results            
-          }
+          this.pokemons = res
+          this.firstGerationPokemon = res.count
         },
         error: (err) => console.error(err)
       }
-    )    
+    )
 
   }
 
