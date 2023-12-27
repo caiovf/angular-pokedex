@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, forkJoin } from 'rxjs';
+import { Observable, forkJoin, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment'
 import { PokemonData, PokemonEvolutionTree, PokemonListData, PokemonSingle, PokemonSpecie } from '../models/pokemonData'
 
@@ -11,7 +12,7 @@ import { PokemonData, PokemonEvolutionTree, PokemonListData, PokemonSingle, Poke
 export class PokemonService {
   private baseURL:string = ""
   private pokeData: PokemonData | any
-  private pokeList: PokemonListData | any
+  private pokeList: PokemonListData | any  
 
   constructor(
     private http:HttpClient
@@ -39,10 +40,22 @@ export class PokemonService {
     return this.pokeData
   }
 
-  getSinglePokemon(pokemonName:string,pokemonId:number):Observable<PokemonSingle>{
-    const pokemonSpecie = this.http.get<PokemonSpecie>(`${this.baseURL}pokemon-species/${pokemonName}`)
-    const pokemonEvolutionTree = this.http.get<PokemonEvolutionTree>(`${this.baseURL}evolution-chain/${pokemonId}`)
-
-    return forkJoin([pokemonSpecie,pokemonEvolutionTree])
+  getSinglePokemon(pokemonName: string): Observable<PokemonSingle> {
+    let pokemonEvolutionUrl: string;
+      
+    const pokemonSpecie$ = this.http.get<PokemonSpecie>(`${this.baseURL}pokemon-species/${pokemonName}`)
+      .pipe(        
+        switchMap((data) => {          
+          pokemonEvolutionUrl = data.evolution_chain.url;          
+          return of(data);
+        })
+      );
+      
+    const pokemonEvolutionTree$ = pokemonSpecie$
+      .pipe(
+        switchMap(() => this.http.get<PokemonEvolutionTree>(pokemonEvolutionUrl))
+      );    
+      
+    return forkJoin([pokemonSpecie$, pokemonEvolutionTree$]);
   }
 }

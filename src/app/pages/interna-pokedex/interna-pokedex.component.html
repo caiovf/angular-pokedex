@@ -1,7 +1,12 @@
 <section class="single-pokemon {{pokemon.types[0].type.name}}">
-    <button class="go-back" (click)="back()">
-        <img class="img-responsive" src="../../../assets/img/voltar.png" width="25" height="25" alt="">
-    </button>
+    <div class="nav-buttons">
+        <button class="back-default {{pokemon.types[0].type.name}}" [routerLink]="['/pokedex']">
+            Voltar para pokedex
+        </button>
+        <button class="go-back" (click)="back()">
+            <img class="img-responsive" src="../../../assets/img/voltar.png" width="25" height="25" alt="">
+        </button>
+    </div>
     <div class="container">
         <div class="section-header">
             <h1><small>#{{pokemon.id}}</small> {{pokemon.name}}</h1>
@@ -100,20 +105,10 @@
                 <div class="box-content">
                     <h2>Evolution Tree</h2>
                     <ul class="evolution-chain">
-                        <li>
-                            <div class="box-img">
-                                <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="">
-                            </div>
-                        </li>
-                        <li>
-                            <div class="box-img">
-                                <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png" alt="">
-                            </div>
-                        </li>
-                        <li>
-                            <div class="box-img">
-                                <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png" alt="">
-                            </div>
+                        <li *ngFor="let evoId of speciesInfoArray">
+                            <a class="box-img" [routerLink]="['/pokedex',evoId.name]">
+                                <img class="img-responsive" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{evoId.id}}.png" width="187" height="187" alt="">
+                            </a>
                         </li>
                     </ul>
                 </div>

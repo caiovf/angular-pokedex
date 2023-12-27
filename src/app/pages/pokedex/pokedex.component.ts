@@ -49,8 +49,6 @@ export class PokedexComponent implements OnInit {
     }
   }
 
-
-
   ngOnInit(): void {
     this.service.getListPokemon(this.offset,this.limit).subscribe(
       {

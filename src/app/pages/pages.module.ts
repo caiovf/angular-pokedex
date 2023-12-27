@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { InternaPokedexComponent } from './interna-pokedex/interna-pokedex.component';
 import { ComponentsModule } from "../components/components.module";
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ComponentsModule } from "../components/components.module";
     ],
     imports: [
         CommonModule,
-        ComponentsModule
+        ComponentsModule,
+        RouterModule
     ],
     providers: [
         Location

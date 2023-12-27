@@ -87,7 +87,8 @@ interface EvolutionDetails {
     turn_upside_down: boolean;
 }
 
-interface Species {
+export interface Species {
+    evolves_to: any
     name: string;
     url: string;
 }
@@ -99,7 +100,7 @@ interface EvolvesTo {
     species: Species;
 }
 
-interface Chain {
+export interface Chain {
     evolution_details: EvolutionDetails[];
     evolves_to?: EvolvesTo[];
     is_baby: boolean;
@@ -107,6 +108,7 @@ interface Chain {
 }
 
 export type PokemonEvolutionTree = {
+    evolves_to?: any
     baby_trigger_item: null | string;
     chain: Chain;
     id: number;
