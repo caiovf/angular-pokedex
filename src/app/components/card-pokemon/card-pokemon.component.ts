@@ -29,7 +29,7 @@ export class CardPokemonComponent implements OnInit {
       },
     }],
     stats:[{
-      base_stat: '',
+      base_stat: 0,
       effort: 0,
       stat:{
           name: ''

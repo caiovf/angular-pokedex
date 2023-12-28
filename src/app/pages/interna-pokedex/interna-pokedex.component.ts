@@ -17,6 +17,18 @@ interface SpeciesInfo {
   name: string;
 }
 
+interface FlavorTextEntry {
+  flavor_text: string;
+  language: {
+    name: string;
+    url: string;
+  };
+  version: {
+    name: string;
+    url: string;
+  };
+}
+
 @Component({
   selector: 'app-interna-pokedex',
   templateUrl: './interna-pokedex.component.html',
@@ -27,6 +39,8 @@ export class InternaPokedexComponent implements OnInit, OnDestroy  {
   private routeSubscription: Subscription | undefined;
   pokemonName:string = ''
   showShiny:boolean = false
+  randomFlavorText:number = 0;
+
   speciesInfoArray:SpeciesInfo[] = [];
   pokemonForms:PokemonForm[] = [
     {
@@ -69,7 +83,7 @@ export class InternaPokedexComponent implements OnInit, OnDestroy  {
       },
     }],
     stats:[{
-      base_stat: '',
+      base_stat: 0,
       effort: 0,
       stat:{
           name: ''
@@ -189,6 +203,48 @@ export class InternaPokedexComponent implements OnInit, OnDestroy  {
     return speciesInfoArray;
   }
 
+  getRandomIndexByLanguage(data: any, language: string = 'en'): number {
+    const indices = data.flavor_text_entries
+      .map((entry: any, index: number) => (entry.language.name === language ? index : -1))
+      .filter((index: number) => index !== -1);
+
+    return indices.length > 0 ? indices[Math.floor(Math.random() * indices.length)] : null;
+  }
+
+  substituirString(str: string, antigo: string, novo: string): string {
+    return str.replace(antigo, novo);
+  }
+
+  statsCalculator(statName:string,stat:number){
+    let mtp = 0
+    switch (statName) {
+      case 'hp':
+        mtp = 3.8
+      break;
+      case 'attack':
+        mtp = 2.6
+      break;
+      case 'defense':
+        mtp = 2.5
+      break;
+      case 'special-attack':
+        mtp = 2.1
+      break;
+      case 'special-defense':
+        mtp = 2.4
+      break;
+      case 'speed':
+        mtp = 2.4
+      break;      
+    
+      default:
+        mtp = 2.5
+      break;
+    }
+
+    return Math.floor(stat * mtp)
+  }
+  
   constructor(
     private activeRoute: ActivatedRoute,
     private location:Location,
@@ -203,6 +259,7 @@ export class InternaPokedexComponent implements OnInit, OnDestroy  {
     this.service.getPokemon(this.pokemonName).subscribe({
       next: (res) => {
         this.pokemon = res;
+        console.log(this.pokemon.stats);
 
         this.service.getSinglePokemon(this.pokemonName).subscribe({
           next: (resSingle) => {
@@ -210,9 +267,7 @@ export class InternaPokedexComponent implements OnInit, OnDestroy  {
             this.pokemonEvolution = resSingle[1];
 
             this.speciesInfoArray = this.extractAllSpeciesInfoFromEvolutionTree(this.pokemonEvolution);
-
-            // console.log(this.pokemonEvolution.chain)
-            console.log(this.extractAllSpeciesInfoFromEvolutionTree(this.pokemonEvolution));
+            this.randomFlavorText = this.getRandomIndexByLanguage(this.pokemonSpecies.flavor_text_entries);
           },
           error: (err) => console.error(err)
         });

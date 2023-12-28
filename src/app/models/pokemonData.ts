@@ -17,7 +17,7 @@ export type PokemonData = {
         }
     }
     stats:[{
-        base_stat:string
+        base_stat:number
         effort:number
         stat:{
             name:string

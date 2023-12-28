@@ -45,7 +45,7 @@
                     <div class="box-left">
                         <div class="bio">
                             <h2>Description</h2>
-                            <p>Spits fire that is hot enough to melt boulders.^LKnown to cause forest fires unintentionally.</p>
+                            <p>{{ pokemonSpecies.flavor_text_entries[randomFlavorText].flavor_text}}</p>
                         </div>
                         <div class="pokemon-type">
                             <h2>Type</h2>
@@ -57,47 +57,12 @@
                     <div class="box-right">
                         <h2>Stats</h2>
                         <ul>
-                            <li>
-                                <h3>HP</h3>
+                            <li *ngFor="let stats of pokemon.stats">
+                                <h3>{{substituirString(stats.stat.name,'-',' ')}}</h3>
                                 <div class="progress-container">
-                                    <progress max="330" value="95">95</progress>
+                                    <progress class="{{pokemon.types[0].type.name}}-progress" max="{{statsCalculator(stats.stat.name,stats.base_stat)}}" value="{{stats.base_stat}}">{{stats.base_stat}}</progress>
                                 </div>
-                                <span>95</span>
-                            </li>
-                            <li>
-                                <h3>ATK</h3>
-                                <div class="progress-container">
-                                    <progress max="248" value="104">104</progress>
-                                </div>
-                                <span>104</span>
-                            </li>
-                            <li>
-                                <h3>DEF</h3>
-                                <div class="progress-container">
-                                    <progress max="258" value="109">109</progress>
-                                </div>
-                                <span>109</span>
-                            </li>
-                            <li>
-                                <h3>S.ATK</h3>
-                                <div class="progress-container">
-                                    <progress max="258" value="115">115</progress>
-                                </div>
-                                <span>115</span>
-                            </li>
-                            <li>
-                                <h3>S.DEF</h3>
-                                <div class="progress-container">
-                                    <progress max="210" value="85">85</progress>
-                                </div>
-                                <span>85</span>
-                            </li>
-                            <li>
-                                <h3>SPD</h3>
-                                <div class="progress-container">
-                                    <progress max="240" value="100">100</progress>
-                                </div>
-                                <span>100</span>
+                                <span>{{stats.base_stat}}</span>
                             </li>
                         </ul>
                     </div>

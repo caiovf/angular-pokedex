@@ -56,79 +56,141 @@ button
     &:hover
         background: #6890f0
 
+.water,
+.fire,
+.grass,
+.electric,
+.psychic,
+.ice,
+.dragon,
+.dark,
+.normal,
+.fighting,
+.flying,
+.poison,
+.ground,
+.rock,
+.bug,
+.ghost,
+.steel,
+.fairy 
+    &-progress
+        appearance: none
+        border-radius: 25px
+        overflow: hidden
+
+        &::-webkit-progress-bar
+            background-color: #cccccc                
+
 .water
     background: #6890f0
 
+    &-progress        
+        &::-webkit-progress-value
+            background-color: #6890f0        
 
 .fire
     background: #f05030
-
+    
+    &-progress
+        &::-webkit-progress-value
+            background-color: #f05030
 
 .grass
     background: #78c850 
-
-
-.grass
-    background: #78c850 
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #78c850 
 
 .electric
     background: #f8d030
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #f8d030
 
 .psychic 
     background: #f85888
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #f85888
 
 .ice 
     background: #98d8d8
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #98d8d8
 
 .dragon 
     background: #7038f8
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #7038f8
 
 .dark 
     background: #705848
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #705848
 
 .normal 
     background: #a8a878
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #a8a878
 
 .fighting 
     background: #903028
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #903028
 
 .flying 
     background: #a890f0
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #a890f0
 
 .poison 
     background: #a040a0
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #a040a0
 
 .ground 
     background: #e0c068
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #e0c068
 
 .rock 
     background: #b8a038
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #b8a038
 
 .bug 
     background: #a8b820
+    &-progress
+        &::-webkit-progress-value
+            background-color: #a8b820
 
 .ghost 
     background: #705898
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #705898
 
 .steel 
     background: #b8b8d0
-
+    &-progress
+        &::-webkit-progress-value
+            background-color: #b8b8d0
 
 .fairy 
     background: #ffacac
+    &-progress
+        &::-webkit-progress-value
+            background-color: #ffacac
 
 .types 
     display: flex
