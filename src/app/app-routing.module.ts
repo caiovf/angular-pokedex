@@ -9,7 +9,7 @@ import { InternaPokedexComponent } from './pages/interna-pokedex/interna-pokedex
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: PokedexComponent
   },
   {
     path: 'pokedex',
