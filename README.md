@@ -1,3 +1,3 @@
 # AngularPokedex
 
-[Acessar o Projeto]((https://caiovf.github.io/angular-pokedex/)
+[Acessar o Projeto](https://caiovf.github.io/angular-pokedex/)
